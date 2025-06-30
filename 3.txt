@@ -55,6 +55,7 @@ services:
    - app-network
   depends_on:
    - app1
+
 networks:
  app-network:
   driver: bridge
