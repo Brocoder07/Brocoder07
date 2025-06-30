@@ -1,0 +1,22 @@
+provider "aws" {
+    region = "eu-north-1"
+}
+resource "aws_instance" "ec2_machine" {
+    ami = "ami-00f34bf9aeacdf007"
+    instance_type = "t3.micro"
+    tags = {
+        Name = "Terra EC2"
+    }
+}
+resource "aws_s3_bucket" "demo_bucket" {
+    bucket = "brocoders-aws-bucket"
+    tags = {
+        Name = "Terra S3 Bucket"
+    }
+}
+resource "aws_s3_bucket_object" "text_file" {
+    bucket = aws_s3_bucket.demo_bucket.bucket
+    key    = "sample.txt"
+    source = "./sample.txt"
+}
+main.tf

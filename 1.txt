@@ -1,0 +1,47 @@
+package com.lab;
+
+import java.util.ResourceBundle;
+
+public class App {
+	public int userLogin(String in_user, String in_pwd) {
+		ResourceBundle rb = ResourceBundle.getBundle("config");
+		String userName = rb.getString("username");
+		String password = rb.getString("password");
+		if(in_user.equals(userName) && in_pwd.equals(password)) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+}
+App.java
+
+package com.lab;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class AppTest {
+
+	@Test
+	public void testlogin1() {
+		App myapp = new App();
+		Assert.assertEquals(0, myapp.userLogin("abc","abc123"));
+	}
+	@Test
+	public void testlogin2(){
+		App myapp = new App();
+		Assert.assertEquals(1,myapp.userLogin("abc","abc@123"));
+	}
+}
+AppTest.java
+
+
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.11.0</version>
+    <scope>test</scope>
+</dependency>
+  </dependencies>
