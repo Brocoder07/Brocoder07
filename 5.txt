@@ -20,3 +20,6 @@ resource "aws_s3_bucket_object" "text_file" {
     source = "./sample.txt"
 }
 main.tf
+
+sample.txt:
+Hello, welcome to terraform!!
